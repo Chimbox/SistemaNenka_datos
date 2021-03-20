@@ -12,23 +12,41 @@ import javax.persistence.EntityManager;
 class FDatos implements IDatos{
 
     private static EntityManager em;
+    private static ProductosRepository productosRep;
+    private static VentasRepository ventasRep;
 
     public FDatos(EntityManager em) {
         FDatos.em = em;
     }
 
+    public static ProductosRepository getProductosRep() {
+        if(productosRep==null){
+            productosRep=new ProductosRepository(em, Producto.class);
+        }
+        return productosRep;
+    }
+
+    public static VentasRepository getVentasRep() {
+        if(ventasRep==null){
+            ventasRep=new VentasRepository(em, Venta.class);
+        }
+        return ventasRep;
+    }
+    
+    
+
     @Override
     public Producto guardarProducto(Producto producto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getProductosRep().save(producto);
     }
 
     @Override
     public Venta guardarVenta(Venta venta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getVentasRep().save(venta);
     }
 
     @Override
     public List<Producto> obtenerProductos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getProductosRep().findAll();
     }
 }
