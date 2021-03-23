@@ -15,7 +15,7 @@ import javax.persistence.Persistence;
  */
 public class FabricaDatos {
 
-    private static IDatos datos;
+    private static FDatos datos;
 
     public static IDatos getFachada() {
         if (datos == null) {
