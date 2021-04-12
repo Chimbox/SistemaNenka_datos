@@ -76,4 +76,9 @@ class FDatos implements IDatos{
     public List<Empleado> obtenerEmpleados() {
         return getEmpleadosRep().findAll();
     }
+
+    @Override
+    public Producto buscarProducto(int id) {
+        return getProductosRep().find(id);
+    }
 }
