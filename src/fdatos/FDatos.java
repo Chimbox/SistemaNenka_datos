@@ -81,4 +81,9 @@ class FDatos implements IDatos{
     public Producto buscarProducto(int id) {
         return getProductosRep().find(id);
     }
+
+    @Override
+    public List<Producto> buscarProductos(String parametro) {
+        return getProductosRep().buscarProducto(parametro);
+    }
 }

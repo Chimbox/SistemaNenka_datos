@@ -14,6 +14,7 @@ public interface IDatos {
     
     public Producto guardarProducto(Producto producto);
     public Venta guardarVenta(Venta venta);
+    public List<Producto> buscarProductos(String parametro);
     public List<Producto> obtenerProductos();
     public List<Cliente> obtenerClientes();
     public List<Empleado> obtenerEmpleados();
