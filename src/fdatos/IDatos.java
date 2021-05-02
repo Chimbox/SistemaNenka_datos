@@ -19,5 +19,6 @@ public interface IDatos {
     public List<Cliente> obtenerClientes();
     public List<Empleado> obtenerEmpleados();
     public Producto buscarProducto(int id);
+    public Empleado buscarEmpleado(String usuario, String contrasena);
     
 }

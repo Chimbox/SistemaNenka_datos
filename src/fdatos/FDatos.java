@@ -86,4 +86,9 @@ class FDatos implements IDatos{
     public List<Producto> buscarProductos(String parametro) {
         return getProductosRep().buscarProducto(parametro);
     }
+
+    @Override
+    public Empleado buscarEmpleado(String usuario, String contrasena) {
+        return getEmpleadosRep().buscarEmpleado(usuario, contrasena);
+    }
 }
