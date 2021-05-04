@@ -20,6 +20,6 @@ public class ProductosRepository extends RepositoryBase<Producto> {
     }
     
     public List<Producto> buscarProductoCategoria(String categoria){
-        return this.entityManager.createNativeQuery(String.format("SELECT * FROM productos p INNER JOIN (categorias c) ON (p.id_categoria = c.id) WHERE c.nombre LIKE '%%%s%%'", categoria), Producto.class).getResultList();
+        return this.entityManager.createNativeQuery(String.format("SELECT * FROM productos p JOIN categorias ON (p.id_categoria) WHERE categorias.nombre LIKE '%%%s%%'", categoria), Producto.class).getResultList();
     }
 }
