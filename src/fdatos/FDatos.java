@@ -4,6 +4,7 @@ import dominio.Cliente;
 import dominio.Empleado;
 import dominio.Producto;
 import dominio.Venta;
+import java.sql.Connection;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -18,6 +19,7 @@ class FDatos implements IDatos{
     private static VentasRepository ventasRep;
     private static ClientesRepository clientesRep;
     private static EmpleadosRepository empleadosRep;
+    private static ConnectionRepository connectionRep;
     
 
     public FDatos(EntityManager em) {
@@ -50,6 +52,13 @@ class FDatos implements IDatos{
             empleadosRep=new EmpleadosRepository(em, Empleado.class);
         }
         return empleadosRep;
+    }
+    
+    public static ConnectionRepository getConnectionRep() {
+        if(connectionRep==null){
+            connectionRep=new ConnectionRepository(em);
+        }
+        return connectionRep;
     }
 
     @Override
@@ -96,4 +105,9 @@ class FDatos implements IDatos{
     public List<Producto> buscarProductoCategoria(String categoria) {
         return getProductosRep().buscarProductoCategoria(categoria);
     }
+
+    @Override
+    public Connection getConnnection(){
+        return getConnectionRep().getConnection();
+    }   
 }

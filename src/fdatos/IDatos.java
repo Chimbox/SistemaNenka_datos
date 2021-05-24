@@ -4,6 +4,7 @@ import dominio.Cliente;
 import dominio.Empleado;
 import dominio.Producto;
 import dominio.Venta;
+import java.sql.Connection;
 import java.util.List;
 
 /**
@@ -21,5 +22,6 @@ public interface IDatos {
     public List<Empleado> obtenerEmpleados();
     public Producto buscarProducto(int id);
     public Empleado buscarEmpleado(String usuario, String contrasena);
+    public Connection getConnnection();
     
 }
