@@ -1,8 +1,10 @@
 package fdatos;
 
+import dominio.Categoria;
 import dominio.Cliente;
 import dominio.Empleado;
 import dominio.Producto;
+import dominio.Proveedor;
 import dominio.Venta;
 import java.sql.Connection;
 import java.util.List;
@@ -19,6 +21,8 @@ public interface IDatos {
     public List<Producto> buscarProductoCategoria(String categoria);
     public List<Producto> obtenerProductos();
     public List<Cliente> obtenerClientes();
+    public List<Categoria> obtenerCategorias();
+    public List<Proveedor> obtenerProveedores();
     public List<Empleado> obtenerEmpleados();
     public Producto buscarProducto(int id);
     public Empleado buscarEmpleado(String usuario, String contrasena);

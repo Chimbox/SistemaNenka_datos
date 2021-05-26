@@ -1,8 +1,10 @@
 package fdatos;
 
+import dominio.Categoria;
 import dominio.Cliente;
 import dominio.Empleado;
 import dominio.Producto;
+import dominio.Proveedor;
 import dominio.Venta;
 import java.sql.Connection;
 import java.util.List;
@@ -18,6 +20,8 @@ class FDatos implements IDatos{
     private static ProductosRepository productosRep;
     private static VentasRepository ventasRep;
     private static ClientesRepository clientesRep;
+    private static ProveedorRepository proveedorRep;
+    private static CategoriaRepository categRep;
     private static EmpleadosRepository empleadosRep;
     private static ConnectionRepository connectionRep;
     
@@ -31,6 +35,20 @@ class FDatos implements IDatos{
             productosRep=new ProductosRepository(em, Producto.class);
         }
         return productosRep;
+    }
+    
+    public static CategoriaRepository getCategoriaRep() {
+        if(categRep==null){
+            categRep=new CategoriaRepository(em, Categoria.class);
+        }
+        return categRep;
+    }
+    
+    public static ProveedorRepository getProveedorRep() {
+        if(proveedorRep==null){
+            proveedorRep = new ProveedorRepository(em, Proveedor.class);
+        }
+        return proveedorRep;
     }
 
     public static VentasRepository getVentasRep() {
@@ -79,6 +97,16 @@ class FDatos implements IDatos{
     @Override
     public List<Cliente> obtenerClientes() {
         return getClientesRep().findAll();
+    }
+    
+    @Override
+    public List<Categoria> obtenerCategorias(){
+        return getCategoriaRep().findAll();
+    }
+    
+    @Override
+    public List<Proveedor> obtenerProveedores(){
+        return getProveedorRep().findAll();
     }
 
     @Override
